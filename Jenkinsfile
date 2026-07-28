@@ -21,7 +21,7 @@ pipeline{
         }
         stage('Sonar scanning'){
             steps{
-                withSonarQubeEnv('Sonar_Token') {
+                withSonarQubeEnv('sonar-server') {
                         sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Deployment \
                         -Dsonar.java.binaries=. \
                         -Dsonar.projectKey=Deployment '''
