@@ -6,7 +6,7 @@ pipeline{
         maven 'Maven'
     }
     environment{
-        scanner-tool 'sonar-scanner'
+        SCANNER_HOME=tool 'sonar-scanner'
     }
     stages{
         stage('Git Checkout'){
