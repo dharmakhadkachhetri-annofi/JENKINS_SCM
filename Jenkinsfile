@@ -24,7 +24,7 @@ pipeline{
                 withSonarQubeEnv('Sonar_Token') {
                         sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Deployment \
                         -Dsonar.java.binaries=. \
-                        -Dsoner.projectKey=Deployment '''
+                        -Dsonar.projectKey=Deployment '''
                     }
              }
         }
