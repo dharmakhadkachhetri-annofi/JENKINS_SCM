@@ -22,7 +22,7 @@ pipeline{
         stage('Sonar scanning'){
             steps{
                 withSonarQubeEnv('Sonar_Token') {
-                        sh ''' $Scanner_HOME/bin/sonar-scanner -Dsonar.projectName=Deployment \
+                        sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Deployment \
                         -Dsonar.java.binaries=. \
                         -Dsoner.projectKey=Deployment '''
                     }
