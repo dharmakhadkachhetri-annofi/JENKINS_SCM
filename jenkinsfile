@@ -1,9 +1,9 @@
 pipeline{
     agent any
 
-    tools{
-        jdk 'jdk8'
-        maven 'maven3'
+    tools {
+        jdk 'java-jdk'
+        maven 'Maven'
     }
     stages{
         stage('Git Checkout'){
@@ -13,7 +13,7 @@ pipeline{
         }
         stage('Compile'){
             steps{
-                sh "mvn clean complile"
+                sh "mvn clean compile"
             }
         }
         stage('Package'){
