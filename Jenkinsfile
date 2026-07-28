@@ -16,7 +16,12 @@ pipeline{
         }
         stage('Compile'){
             steps{
-                sh "mvn clean compile"
+                sh "mvn clean package"
+            }
+        }
+        stage('Test'){
+            steps{
+                sh "mvn test"
             }
         }
         stage('Sonar scanning'){
@@ -28,9 +33,9 @@ pipeline{
                     }
              }
         }
-        stage('Package'){
+        stage('Build'){
             steps{
-                sh "mvn clean package -DskipTests=true"
+                sh "mvn clean package"
             }
         }
     }
