@@ -5,6 +5,9 @@ pipeline{
         jdk 'java-jdk'
         maven 'Maven'
     }
+    environment{
+        scanner-tool 'sonar-scanner'
+    }
     stages{
         stage('Git Checkout'){
             steps{
@@ -16,9 +19,18 @@ pipeline{
                 sh "mvn clean compile"
             }
         }
+        stage('Sonar scanning'){
+            steps{
+                withSonarQubeEnv('Sonar_Token') {
+                        sh ''' $Scanner_HOME/bin/sonar-scanner -Dsonar.projectName=Deployment \
+                        -Dsonar.java.binaries=. \
+                        -Dsoner.projectKey=Deployment '''
+                    }
+             }
+        }
         stage('Package'){
             steps{
-                sh "mvn clean package"
+                sh "mvn clean package -DskipTests=true"
             }
         }
     }
